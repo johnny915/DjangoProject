@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+<div class="container-fluid col-md-4s">
+    <div class="container mb-5 mt-3 ms-6">
+        <h1><span class="badge bg-secondary">Cart</span></h1>
+    </div>
+    <table class="table" border="5">
+        <thead>
+        <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Product Detail</th>
+            <th scope="col">Product Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in Cart %}
+        <tr>
+            <td>{{i.product_cart}}</td>
+            <td>{{i.product_cart.product_dec}}</td>
+            <td>{{i.product_cart.product_price}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="container" align="center">
+    <a href="{% url 'checkout' %}"> <input type="submit" class="btn btn-primary" value="Checkout"> </a>
+</div>
+{% endblock %}

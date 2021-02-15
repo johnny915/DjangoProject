@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+
+
+        <div class="card-group">
+            {% for i in result %}
+            <div class="col-md-4 p-5">
+                <div class="col mb-4">
+                    <div class="card h-100">
+                    <img class="card-img-top" src="/media/{{ i.product_img }}">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{i.product_name}}</h5>
+                    <p class="card-text">{{i.product_price}}</p>
+                    <form method="POST" action="cart_item">
+                        {% csrf_token %}
+                        <input hidden type="text" name="id" value='{{i.product_id}}'>
+                        <input type="submit" class="btn btn-primary" value="Add to cart">
+                    </form>
+
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

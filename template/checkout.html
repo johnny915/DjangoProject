@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container mt-5 mb-4">
+    <div class="container mb-7 mx-3">
+        <h1><span class="badge bg-secondary">Check Out</span></h1>
+    </div>
+
+    <h3 align="center" class="container mt-3">Your ordered products </h3>
+    {% for i in context %}
+    <ul class="list-group">
+        <li class="list-group-item">{{i.product_cart.product_name}} {{i.product_cart.product_price}}</li>
+    </ul>
+    {% endfor %}
+</div>
+<h3 align="center" class="container mt-3">Please fill below details for further process</h3>
+<div class="container">
+    <form class="row g-3" method="POST" action="user">
+        {% csrf_token %}
+        <div class="col-md-6">
+            <label class="form-label" name="phone1">Phone Number</label>
+            <input type="tel" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label" name="phone2">Alternate Phone Number</label>
+            <input type="tel" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label>Address 1</label>
+            <input type="text" name="address1" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+            <label>Address 2</label>
+            <input type="text" name="address2" required class="form-control" aria-required="true">
+
+        </div>
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">City</label>
+            <input type="text" class="form-control" id="inputAddress" name="city" required>
+        </div>
+        <div class="col-12">
+            <label class="form-label"> State</label>
+            <input type="text" class="form-control" name="state" required>
+        </div>
+
+        <div class="col-md-2">
+            <label for="inputZip" class="form-label">Zip</label>
+            <input type="text" class="form-control" name="zipcode" id="inputZip">
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-success">Confirm Your Order</button>
+        </div>
+    </form>
+
+</div>
+{% endblock %}

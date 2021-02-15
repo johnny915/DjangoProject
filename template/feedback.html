@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{%block title%} Registered {%endblock%}
+{%block body%}
+<div class="jumbotron">
+    <h1 class="display-4"><b>Hello, {{context.username}} </></h1>
+    <p class="lead">Your order is placed successfully,</p>
+    <p class="lead">Your product information is shared on your registered Email </p>
+    <p>Thanks for Shopping with us</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'index' %}" role="button">Goto Home</a>
+</div>
+
+{%endblock%}
